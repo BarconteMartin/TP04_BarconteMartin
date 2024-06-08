@@ -18,6 +18,10 @@ public class Materia {
         this.docente = docente;
         this.carrera = carrera;
     }
+    
+    public Materia() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public String getCodigo() {
 		return codigo;

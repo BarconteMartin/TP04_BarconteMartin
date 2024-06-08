@@ -23,6 +23,10 @@ public class Alumno {
         this.domicilio = domicilio;
         this.LU = LU;
     }
+    
+    public Alumno() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public String getDni() {
 		return dni;
