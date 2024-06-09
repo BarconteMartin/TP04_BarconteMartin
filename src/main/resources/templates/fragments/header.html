@@ -49,11 +49,47 @@
 	            </button>
 	            <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
 	                <div class="navbar-nav">
-	                    <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+	                    <a class="nav-link active" aria-current="page" href="/principal/home">Inicio</a>
 	                    <a class="nav-link" href="#">Acerca de</a>
-	                    <a class="nav-link" href="#">Carreras</a>
-	                    <a class="nav-link" href="#">Noticias</a>
-	                    <a class="nav-link" href="#">Contacto</a>
+						<li class="nav-item dropdown">
+							<a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						    	Carreras
+						    </a>
+						    <ul class="dropdown-menu">
+							    <li><a class="dropdown-item" href="/formularioCarreras">Formulario</a></li>
+							    <li><hr class="dropdown-divider"></li>
+							    <li><a class="dropdown-item" href="/carreras">Listado</a></li>
+						    </ul>
+						</li>
+						
+						<li class="nav-item dropdown">
+							<a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Docentes</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="/formularioDocentes">Formulario</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item" href="/docentes">Listado</a></li>
+							</ul>
+						</li>
+						
+						<li class="nav-item dropdown">
+							<a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Alumnos</a>
+						    <ul class="dropdown-menu">
+							    <li><a class="dropdown-item" href="/formularioAlumnos">Formulario</a></li>
+							    <li><hr class="dropdown-divider"></li>
+							    <li><a class="dropdown-item" href="/alumnos">Listado</a></li>
+						    </ul>
+						</li>
+
+						<li class="nav-item dropdown">
+							<a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Materias</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="/formularioMaterias">Formulario</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item" href="/materias">Listado</a></li>
+							</ul>
+						</li>
+						<a class="nav-link" href="#">Noticias</a>
+						<a class="nav-link" href="#">Contacto</a>
 	                </div>
 	            </div>
 	        </div>
