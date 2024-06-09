@@ -1,55 +1,57 @@
 package ar.edu.unju.fi.collections;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import ar.edu.unju.fi.model.Carrera;
-
 public class ListadoCarreras {
+	public static List<Carrera> carreras = new ArrayList<Carrera>();//Aquellas carreras con estado falso se consideran eliminadas
+	public static List<Carrera> carrerasDisponibles = new ArrayList<Carrera>();
+	public static List<Carrera> listarCarreras() {
+		
+		return carrerasDisponibles;
+	}
+	public static Carrera buscarCarreraPorCodigo(String codigo) {
+		for (Carrera carrera : carrerasDisponibles) {
+			if (carrera.getCodigo().equals(codigo)) {
+				return carrera;
+		    }
+		}
+		return null;
+	}
 	
-	public static List<Carrera> carreras = new ArrayList<Carrera>();
-
-		  public static List<Carrera> listarCarreras() {
-
-		    return carreras;
-		  }
-
-		  public static Carrera buscarCarreraPorCodigo(String codigo) {
-		    for (Carrera c : carreras) {
-		      if (c.getCodigo().equals(codigo)) {
-		        return c;
-		      }
-		    }
-		    return null;
-		  }
-
-		  public static void agregarCarrera(Carrera c) {
-			c.setEstado(true);
-		    carreras.add(c);
-		  }
-
-		  public static void modificarCarrera(Carrera carreraModificada) {
-			  carreraModificada.setEstado(true);
-		    for (int i = 0; i < carreras.size(); i++) {
-		      Carrera carrera = carreras.get(i);
-		      if (carrera.getCodigo().equals(carreraModificada.getCodigo())) {
-		        carreras.set(i, carreraModificada);
-		        break;
-		      }
-		    }
-		  }
-		  
-		  public static void eliminarCarrera(String codigo) {
-			  //borrado físico
-		    //carreras.removeIf(carrera -> carrera.getCodigo().equals(codigo));
-
-			  for (int i = 0; i < carreras.size(); i++) {
-			      Carrera carrera = carreras.get(i);
-			      if (carrera.getCodigo().equals(codigo)) {
-			        carrera.setEstado(false);;
-			        break;
-			      }
-			    }
-		  }
-
+	public static void modificarCarrera(Carrera carreraModificada) {
+		carreraModificada.setEstado(true);
+		int i=0;
+		for (Carrera carrera : carrerasDisponibles) {
+			if (carrera.getCodigo().equals(carreraModificada.getCodigo())) {
+				carreras.set(i, carreraModificada);
+				carrerasDisponibles.clear();
+				for(Carrera carrera1 : carreras) {
+					if(carrera1.isEstado()) {
+						carrerasDisponibles.add(carrera1);//Actualizo la lista de carreras disponibles
+					}
+				}
+				break;
+			}
+			i++;
+		}
+	}
+	public static void eliminarCarrera(String codigo) {
+		for (Carrera carrera : carreras) {
+			if (carrera.getCodigo().equals(codigo)) { //Me gusta el borrado logico ya que deja informacion de que carreras
+				carrera.setEstado(false);				//Fueron Borradas
+			    break;
+			}
+		}
+		carrerasDisponibles.clear();
+		for(Carrera carrera : carreras) {
+			if(carrera.isEstado()) {
+				carrerasDisponibles.add(carrera);//Actualizo la lista de carreras disponibles
+			}
+		}
+	}
+	public static void agregarCarrera(Carrera carrera) {
+		carrera.setEstado(true);
+		carreras.add(carrera);
+		carrerasDisponibles.add(carrera);
+	}
 }
